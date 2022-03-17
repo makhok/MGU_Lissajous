@@ -2,15 +2,14 @@ import numpy as np
 import time
 
 
-class lissajous_figure:
+class LissajousFigure:
     """
     Фигуры Лиссажу.
     Задаётся набором точек с координатами x и y.
     """
     def __init__(self, x_array, y_array):
-
-        self.x_arr=x_array
-        self.y_arr=y_array
+        self.x_arr = x_array
+        self.y_arr = y_array
 
 
 class LissajousGenerator:
@@ -40,4 +39,4 @@ class LissajousGenerator:
         t = np.linspace(0, 2 * np.pi, self._resolution)
         x = np.sin(freq_x * t)
         y = np.cos(freq_y * t)
-        return lissajous_figure(x, y)
+        return LissajousFigure(x, y)

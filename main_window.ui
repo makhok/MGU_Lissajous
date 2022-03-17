@@ -87,7 +87,7 @@
       <widget class="QComboBox" name="width_combobox">
        <item>
         <property name="text">
-         <string>1</string>
+         <string>2</string>
         </property>
        </item>
        <item>

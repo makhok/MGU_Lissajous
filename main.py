@@ -1,13 +1,11 @@
 import sys
 import os
 import PyQt5.QtWidgets as qt
-from PyQt5 import uic, QtGui
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAggBase as FigureCanvas
 import matplotlib.pyplot as plt
-import numpy as np
 import json
-
-from lissajousgen import LissajousGenerator, lissajous_figure
+from PyQt5 import uic, QtGui
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from lissajousgen import LissajousGenerator
 
 
 # Настройки фигуры по умолчанию
@@ -34,9 +32,7 @@ class LissajousWindow(qt.QMainWindow):
         # Ставим версию и иконку
         with open("version.txt", "r") as f:
             version = f.readline()
-        self.setWindowTitle("Генератор фигур Лиссажу. Версия {}. CC BY-SA 4.0 Ivanov".format(
-            version
-        ))
+        self.setWindowTitle(f"Генератор фигур Лиссажу. Версия {version}. CC BY-SA 4.0 Ivanov")
         scriptDir = os.path.dirname(os.path.realpath(__file__))
         self.setWindowIcon(QtGui.QIcon(scriptDir + os.path.sep + "icon.bmp"))
 
@@ -71,7 +67,6 @@ class LissajousWindow(qt.QMainWindow):
         """
         # Получаем данные из текстовых полей
         settings = {}
-
         settings["freq_x"] = float(self.freq_x_lineedit.text())
         settings["freq_y"] = float(self.freq_y_lineedit.text())
         settings["color"] = mpl_color_dict[self.color_combobox.currentText()]
